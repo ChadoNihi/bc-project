@@ -1,0 +1,7 @@
+= simple_form_for @photo, url: photos_path do |f|
+	= f.input :image, as: :file
+	= f.input :title
+	= f.input :source
+	= f.input :author, label: 'Author of the photo'
+	= f.association :city
+	= f.button :submit

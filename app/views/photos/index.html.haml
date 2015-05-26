@@ -1,0 +1,3 @@
+-@photos.each do |ph|
+	=image_tag(ph.image.url, alt: "#{ph.title}")
+	%h3= ph.title

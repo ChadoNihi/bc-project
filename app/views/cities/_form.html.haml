@@ -1,0 +1,4 @@
+= simple_form_for @city, url: cities_path do |f|
+	= f.input :name
+	= f.association :region
+	= f.button :submit

@@ -1,0 +1,14 @@
+!!!
+%html
+	%head
+		%title BeautifulCities
+		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+		= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Niconne', 'data-turbolinks-track' => true
+		= javascript_include_tag 'application', 'data-turbolinks-track' => true
+		= csrf_meta_tags
+	%body
+		%header Beautiful Cities
+		= link_to "Add new photo", new_photo_path
+		= link_to "Add new city", new_city_path
+
+		= yield
