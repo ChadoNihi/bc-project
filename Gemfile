@@ -41,3 +41,4 @@ gem 'haml-rails', '~> 0.9.0'
 gem "paperclip", "~> 4.2"
 gem 'simple_form'
 gem 'normalize-rails'
+gem 'masonry-rails'

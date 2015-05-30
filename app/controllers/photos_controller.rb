@@ -29,6 +29,15 @@ class PhotosController < ApplicationController
 	end
 
 	def update
+		respond_to do |format|
+      if @photo.update(photo_params)
+        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+        format.json { render :show, status: :ok, location: @photo }
+      else
+        format.html { render :edit }
+        format.json { render json: @photo.errors, status: :unprocessable_entity }
+      end
+    end
 	end
 
 	def destroy
@@ -46,6 +55,6 @@ class PhotosController < ApplicationController
 	end
 
 	def photo_params
-      params.require(:photo).permit(:title, :source, :author, :city_id, :image)
+      params.require(:photo).permit(:title, :source, :author, :city_id, :image, :all_tags)
     end
 end

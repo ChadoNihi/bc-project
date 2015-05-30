@@ -10,6 +10,17 @@ class CitiesController < ApplicationController
   end
 
   def create
+    @city = City.new(city_params)
+
+    respond_to do |format|
+      if @city.save
+        format.html { redirect_to cities_path, notice: 'city was successfully added.' }
+        format.json { render :show, status: :created, location: @city }
+      else
+        format.html { render :new }
+        format.json { render json: @city.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
@@ -19,5 +30,11 @@ class CitiesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def city_params
+    params.require(:city).permit(:name, :region_id)
   end
 end
