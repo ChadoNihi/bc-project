@@ -7,23 +7,25 @@
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
 		= csrf_meta_tags
 	%body
-		%a(href="#menu" id="menuLink" class="menu-link")
-			/ Hamburger icon
-			%span
+		#layout
+			%a(href="#menu" id="menuLink" class="menu-link")
+				/ Hamburger icon
+				%span
 
-		#menu
-			.pure-menu
-				= link_to "Beautiful Cities", root_path, { :class=>"pure-menu-heading" }
+			#menu
+				.pure-menu
+					= link_to "Beautiful Cities", root_path, { :class=>"pure-menu-heading" }
 
-				%ul.pure-menu-list
-					%li.pure-menu-item
-						= link_to "Cities", cities_path, { :class=>"pure-menu-link" }
-					%li.pure-menu-item
-						= link_to "Regions", regions_path, { :class=>"pure-menu-link" }
-					%li.pure-menu-item.menu-item-divided.pure-menu-selected
-						= link_to "My city", , { :class=>"pure-menu-link" }
-					%li.pure-menu-item
-						= link_to "New photo", new_photo_path, { :class=>"pure-menu-link" }
-					%li.pure-menu-item
-						= link_to "New city", new_city_path, { :class=>"pure-menu-link" }
-		= yield
+					%ul.pure-menu-list
+						%li.pure-menu-item
+							= link_to "Cities", cities_path, { :class=>"pure-menu-link" }
+						%li.pure-menu-item
+							= link_to "Regions", regions_path, { :class=>"pure-menu-link" }
+						%li.pure-menu-item.menu-item-divided.pure-menu-selected
+							= link_to "My city", cities_path, { :class=>"pure-menu-link" }
+						%li.pure-menu-item
+							= link_to "New photo", new_photo_path, { :class=>"pure-menu-link" }
+						%li.pure-menu-item
+							= link_to "New city", new_city_path, { :class=>"pure-menu-link" }
+			%main
+				= yield
