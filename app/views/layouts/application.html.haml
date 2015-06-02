@@ -1,6 +1,8 @@
 !!!
 %html
-	%head
+	%head(lang="en")
+		%meta(charset="utf-8")
+		%meta(name="viewport" content="width=device-width, initial-scale=1")
 		%title BeautifulCities
 		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 		= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Niconne', 'data-turbolinks-track' => true
@@ -21,9 +23,9 @@
 							= link_to "Cities", cities_path, { :class=>"pure-menu-link" }
 						%li.pure-menu-item
 							= link_to "Regions", regions_path, { :class=>"pure-menu-link" }
-						%li.pure-menu-item.menu-item-divided.pure-menu-selected
-							= link_to "My city", cities_path, { :class=>"pure-menu-link" }
 						%li.pure-menu-item
+							= link_to "My city", cities_path, { :class=>"pure-menu-link" }
+						%li.pure-menu-item.menu-item-divided
 							= link_to "New photo", new_photo_path, { :class=>"pure-menu-link" }
 						%li.pure-menu-item
 							= link_to "New city", new_city_path, { :class=>"pure-menu-link" }
