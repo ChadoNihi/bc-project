@@ -1,5 +1,7 @@
 #masonry-container.transitions-enabled.infinite-scroll
 	-@photos.each do |ph|
-		.box
-			=image_tag(ph.image.url, alt: "#{ph.title}")
-			%h3= ph.title
+		= link_to photo_path(ph) do
+			.box
+				%h3= ph.title
+				=image_tag(ph.image.url, alt: "#{ph.title}")
+				%h4= ph.city.name
