@@ -6,13 +6,7 @@
 	= link_to "Get original", "#{@photo.source}"
 
 %h4= @photo.city.name
-%ul
-	%li Founded in __
-	%li About __ people live here
-	%li __ individuals per sq km
-	%li Official website:
-
-.map
+= render 'cities/city_stat', city: @photo.city
 	
 	
 
