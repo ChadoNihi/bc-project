@@ -2,5 +2,6 @@ $ ->
 	$('#masonry-container').imagesLoaded ->
 		$('#masonry-container').masonry
 			itemSelector: '.box'
-			gutterWidth: 30
+			gutterWidth: 20
+			isFitWidth: true
 			percentPosition: true

@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 	before_action :retrieve_photo, only: [:show, :edit, :update, :destroy]
 	def index
-		@photos = Photo.all
+		@photos = Photo.order(sort_option + " " + sort_direction)
 	end
 
 	def show

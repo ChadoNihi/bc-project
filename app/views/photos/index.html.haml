@@ -1,7 +1,14 @@
+%ul
+	%li= sortable 'created_at', 'Default'
+	%li= sortable 'title'
+	%li= sortable 'cities.name', 'City'
+	%li= sortable 'RANDOM()', 'Shuffle'
+
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
 	-@photos.each do |ph|
-		= link_to photo_path(ph) do
-			.box
+		.box
+			= link_to photo_path(ph) do
 				%h3= ph.title
-				=image_tag(ph.image.url, alt: "#{ph.title}")
+				=image_tag(ph.image.url, alt: "#{ph.title}", class: "pure-img")
+			= link_to city_path(ph.city) do
 				%h4= ph.city.name

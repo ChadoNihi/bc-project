@@ -1,9 +1,10 @@
-%h1 @city.name
-= render 'city_stat', city: @city
+.block
+	%h1= @city.name
+	= render 'city_stat', city: @city
 
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
-	-@city.photos.each do |ph|
+	- @city.photos.each do |ph|
 		= link_to photo_path(ph) do
 			.box
 				%h5= ph.title
-				=image_tag(ph.image.url, alt: "#{ph.title}")
+				=image_tag(ph.image.url, alt: "#{ph.title}", class: "pure-img")

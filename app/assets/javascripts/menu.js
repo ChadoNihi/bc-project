@@ -4,6 +4,6 @@ $(function() {
         e.preventDefault();
         $('#layout').toggleClass('active');
         $('#menu').toggleClass('active');
-        $(this).toggleClass('active');
+        $(this).toggleClass('active').addClass('pure-menu-selected');
     });
 });

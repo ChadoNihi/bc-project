@@ -1,4 +1,6 @@
 class CitiesController < ApplicationController
+  before_action :retrieve_city, only: [:show, :edit, :update, :destroy]
+
   def index
   end
 
@@ -33,6 +35,10 @@ class CitiesController < ApplicationController
   end
 
   private
+
+  def retrieve_city
+    @city = City.find(params[:id])
+  end
 
   def city_params
     params.require(:city).permit(:name, :region_id)
