@@ -2,6 +2,7 @@
 	%li= sortable 'created_at', 'Default'
 	%li= sortable 'title'
 	%li= sortable 'cities.name', 'City'
+	%li= sortable 'regions.name', 'Subcontinent'
 	%li= sortable 'RANDOM()', 'Shuffle'
 
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
@@ -12,3 +13,5 @@
 				=image_tag(ph.image.url, alt: "#{ph.title}", class: "pure-img")
 			= link_to city_path(ph.city) do
 				%h4= ph.city.name
+			= link_to region_path(ph.city.region) do
+				%h4= ph.city.region.name
