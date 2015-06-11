@@ -10,8 +10,9 @@
 		.box
 			= link_to photo_path(ph) do
 				%h3= ph.title
-				=image_tag(ph.image.url, alt: "#{ph.title}", class: "pure-img")
-			= link_to city_path(ph.city) do
-				%h4= ph.city.name
-			= link_to region_path(ph.city.region) do
-				%h4= ph.city.region.name
+				=image_tag(ph.image.url, alt: "#{ph.title}")
+			.city-region-line
+				= link_to city_path(ph.city) do
+					%h4= ph.city.name
+				= link_to region_path(ph.city.region) do
+					%h4= ph.city.region.name

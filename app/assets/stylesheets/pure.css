@@ -459,7 +459,7 @@ th {
  * Add this class to an image to make it fit within it's fluid parent wrapper while maintaining
  * aspect ratio.
  */
-.pure-img {
+img {
     max-width: 100%;
     height: auto;
     display: block;
