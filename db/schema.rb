@@ -11,13 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527101555) do
+ActiveRecord::Schema.define(version: 20150612111100) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
     t.integer  "region_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "title_photo_file_name"
+    t.string   "title_photo_content_type"
+    t.integer  "title_photo_file_size"
+    t.datetime "title_photo_updated_at"
   end
 
   add_index "cities", ["region_id"], name: "index_cities_on_region_id"

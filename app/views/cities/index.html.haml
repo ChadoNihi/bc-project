@@ -1,2 +1,6 @@
-%h1 Cities#index
-%p Find me in app/views/cities/index.html.haml
+#masonry-container.transitions-enabled.infinite-scroll.has-gutters
+	-@cities.each do |city|
+		.box
+			= link_to city_path(city) do
+				%h3= city.name
+				=image_tag(city.image.url(:list))
