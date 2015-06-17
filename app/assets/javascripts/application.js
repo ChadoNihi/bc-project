@@ -13,5 +13,6 @@
 //= require jquery2
 //= require jquery_ujs
 //= require masonry/jquery.masonry
+//= require photoswipe
 //= require turbolinks
 //= require_tree .

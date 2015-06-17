@@ -35,4 +35,6 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.sass.preferred_syntax = :sass
+
+  Paperclip.options[:command_path] = "C:/ImageMagick-6.9.1-Q16/"
 end

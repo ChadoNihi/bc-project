@@ -1,18 +1,47 @@
-%ul
-	%li= sortable 'created_at', 'Default'
-	%li= sortable 'title'
-	%li= sortable 'cities.name', 'City'
-	%li= sortable 'regions.name', 'Subcontinent'
-	%li= sortable 'RANDOM()', 'Shuffle'
-
+.block
+	%ul.hor-list
+		%li= sortable 'created_at', 'Default'
+		%li= sortable 'title'
+		%li= sortable 'cities.name', 'City'
+		%li= sortable 'regions.name', 'Subcontinent'
+		%li= sortable 'RANDOM()', 'Shuffle'
+.photos-data= @photos.to_json
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
 	-@photos.each do |ph|
 		.box
 			= link_to photo_path(ph) do
 				%h3= ph.title
-				=image_tag(ph.image.url(:list), alt: "#{ph.title}")
+			=image_tag(ph.image.url, alt: "#{ph.title}")
 			.city-region-line
 				= link_to city_path(ph.city) do
 					%h4= ph.city.name
 				= link_to region_path(ph.city.region) do
 					%h4= ph.city.region.name
+/
+	%div(class="pswp" tabindex="-1" role="dialog" aria-hidden="true")
+		.pswp__bg
+			.pswp__scroll-wrap
+				.pswp__container
+					.pswp__item
+					.pswp__item
+					.pswp__item
+				.pswp__ui.pswp__ui--hidden
+					.pswp__top-bar
+						.pswp__counter
+						%button(class="pswp__button pswp__button--close" title="Close (Esc)")
+						%button(class="pswp__button pswp__button--share" title="Share")
+						%button(class="pswp__button pswp__button--fs" title="Toggle fullscreen")
+						%button(class="pswp__button pswp__button--zoom" title="Zoom in/out")
+
+						.pswp__preloader
+							.pswp__preloader__icn
+								.pswp__preloader__cut
+									.pswp__preloader__donut
+					.pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
+						.pswp__share-tooltip
+
+					%button(class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)")
+					%button(class="pswp__button pswp__button--arrow--right" title="Next (arrow right)")
+
+					.pswp__caption
+						.pswp__caption__center

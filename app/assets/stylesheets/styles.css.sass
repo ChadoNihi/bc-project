@@ -13,20 +13,34 @@ body
 		margin: 0.7em 0 0.9em
 		margin-left: 50%
 	a
-		&.current
-			text-decoration: underline
+		color: #ccccdd
+		color: rgba(240,240,255,0.55)
+		display: inline-block
+		text-decoration: none
+		text-shadow: 1px 1px 10px rgba(240,240,255,0.7)
+		-webkit-transition: all 0.2s ease-in-out
+		-moz-transition: all 0.2s ease-in-out
+		-o-transition: all 0.2s ease-in-out
+		-ms-transition: all 0.2s ease-in-out
+		transition: all 0.2s ease-in-out
+
 		&.asc:after
 			content: ' ▲'
 		&.desc:after
 			content: ' ▼'
+		&:hover, &.current
+			color: #ffffff
+			text-shadow: 0 0 1px #f0dddd
+			color: rgba(235,230,230,0.75)
 	#masonry-container
 		.box
 			color: #ffffff
 			margin: 1em 0
 			max-width: 100%
 			padding: 0 0.8em
-			/*img
-				width: 500px*/
+			img
+				cursor: pointer
+				width: 480px
 	.city-stat li
 		float: left
 		margin: 0 0.6em 0.8em
@@ -35,7 +49,8 @@ body
 		background-color: rgba(0,0,0,0.60)
 		border-radius: 16px
 	.block
-		width: 100%
+		display: inline-block
+		max-width: 100%
 		margin: 0.5em auto
 		padding: 0.05em 1em
 		img
@@ -50,3 +65,17 @@ body
 		max-width: 86%
 	.clearfix
 		overflow: auto
+	.photos-data
+		display: none
+	.hor-list
+		margin: 0
+		padding: 0
+		li
+			display: inline-block
+			list-style: none
+			a
+				margin-right: 10px
+				padding: 10px 5px
+			&:last-child
+				a:after
+					content: ''
