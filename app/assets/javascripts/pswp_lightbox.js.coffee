@@ -1,5 +1,30 @@
 $ ->
-	pswpDom = '<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    $photos = $ '.photos-data', 'main'
+    return if $photos.length === 0
+
+    startInitPhotoSwipe
+    ###
+	$('.box img').click ->
+		pswpElement = document.getElementsByClassName('pswp')[0]
+		slides = []
+
+		JSON.parse document.getElementsByClassName('photos-data')[0].innerHTML
+			.forEach (obj) ->
+				slides.push
+					src: 'assets/'+obj.image_file_name
+					w: 640
+					h: 360
+					title: obj.title
+
+		options = 
+			index: 0
+
+		gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, slides, options)
+		gallery.init()
+        ###
+
+startInitPhotoSwipe = ->
+    pswpDom = '<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="pswp__bg"></div>
 
     <!-- Slides wrapper with overflow:hidden. -->
@@ -57,21 +82,12 @@ $ ->
     </div>
 
 </div>'
-	$('body').append pswpDom
-	$('.box img').click ->
-		pswpElement = document.getElementsByClassName('pswp')[0]
-		slides = []
+    $('body').append pswpDom
 
-		JSON.parse document.getElementsByClassName('photos-data')[0].innerHTML
-			.forEach (obj) ->
-				slides.push
-					src: 'assets/'+obj.image_file_name
-					w: 640
-					h: 360
-					title: obj.title
+    $('#masonry-container').on 'click', '.city-photo', initPhotoSwipeFromDOM '#masonry-container'
 
-		options = 
-			index: 0
-
-		gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, slides, options)
-		gallery.init()
+initPhotoSwipeFromDOM = (gallery) ->
+    parseGalleryPhotos = (gallery) ->
+        
+    pswpElement = document.getElementsByClassName('pswp')[0]
+    slides = []

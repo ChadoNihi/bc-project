@@ -3,8 +3,8 @@
 	= render 'city_stat', city: @city
 
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
-	- @city.photos.each do |ph|
+	- @city.photos.each_with_index do |ph, i|
 		= link_to photo_path(ph) do
 			.box
 				%h5= ph.title
-				=image_tag(ph.image.url, alt: "#{ph.title}")
+				=image_tag(ph.image.url, alt: "#{ph.title}", class: "city-photo", data-index: i)
