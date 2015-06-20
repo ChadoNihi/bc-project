@@ -1,7 +1,8 @@
 $ ->
-    return if $('.photos-data', 'main').length === 0
+    return if $('.photos-data', 'main').length == 0
 
-    startInitPhotoSwipe
+    startInitPhotoSwipe()
+    console.log "after startInitPhotoSwipe"
 
 startInitPhotoSwipe = ->
     pswpDom = '<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -33,7 +34,6 @@ startInitPhotoSwipe = ->
                 <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
 
                 <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
                 <div class="pswp__preloader">
                     <div class="pswp__preloader__icn">
                       <div class="pswp__preloader__cut">
@@ -62,20 +62,26 @@ startInitPhotoSwipe = ->
     </div>
 
 </div>'
-    $('body').append pswpDom
-    $('#masonry-container').on 'click', '.city-photo', initPhotoSwipeFromDOM '#masonry-container'
+    document.getElementsByTagName('main')[0].insertAdjacentHTML 'beforeend', pswpDom
+    $('#masonry-container').on 'click', '.city-photo', ->
+        initPhotoSwipeFromDOM '#masonry-container', $(this).data 'index'
 
-initPhotoSwipeFromDOM = (photoContainer) ->
-    openPhotoSwipe = (index, photoContainer) ->
-        slides = parsePhotos
+initPhotoSwipeFromDOM = (photoContainer, index) ->
+    openPhotoSwipe = (photoContainer) ->
+        slides = parsePhotos()
         options =
             index: parseInt index, 10
             bgOpacity: 0.8
-            # history: false
+            hideAnimationDuration: 0
+            showAnimationDuration: 0
+            history: false
         return false if isNaN options.index
+        console.log slides
 
         gallery = new PhotoSwipe document.getElementsByClassName('pswp')[0], PhotoSwipeUI_Default, slides, options
+        console.log 'after PhotoSwipe new'
         gallery.init()
+        console.log 'after gellery init'
 
     parsePhotos = ->
         slides = []
@@ -83,8 +89,11 @@ initPhotoSwipeFromDOM = (photoContainer) ->
             .forEach (obj) ->
                 slides.push
                     src: 'assets/'+obj.image_file_name
+                    #src: 'https://farm4.staticflickr.com/3894/15008518202_c265dfa55f_h.jpg'
                     w: 640
-                    h: 360
+                    h: 433
                     title: obj.title
-        
-    openPhotoSwipe index, photoContainer
+        slides
+    
+    console.log "in initPhotoSwipeFromDOM"
+    openPhotoSwipe photoContainer
