@@ -1,10 +1,12 @@
 .block
 	%h1= @city.name
-	= render 'city_stat', city: @city
+	/
+		= render 'city_links', city: @city
+	= render 'city_gmap'
 
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
 	- @city.photos.each_with_index do |ph, i|
 		= link_to photo_path(ph) do
 			.box
 				%h5= ph.title
-				=image_tag(ph.image.url, alt: "#{ph.title}", class: "city-photo", data-index: i)
+				=image_tag(ph.image.url, :alt => "#{ph.title}", :class => "city-photo", :data => { :index => "#{i}"})

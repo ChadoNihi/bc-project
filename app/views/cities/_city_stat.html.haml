@@ -1,5 +1,5 @@
 %ul.city-stat.clearfix
-	%li Founded in __
-	%li About __ people live there
-	%li __ individuals per sq km
-	%li Official website:
+	%li= "Founded in city.foundation_date"
+	%li= "Population: around city.population humans"
+	%li= "Density: city.density people per km&sup2;".html_safe
+	%li= link_to "Official website", city.website

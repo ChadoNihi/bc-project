@@ -8,9 +8,9 @@
 		= link_to region_path(@photo.city.region) do
 			%h4= @photo.city.region.name
 	= link_to "Get original", "#{@photo.source}"
-
-	= render 'cities/city_stat', city: @photo.city
-		
+	\
+		= render 'cities/city_links', city: @photo.city
+	= render 'cities/city_gmap'
 		
 
 	=link_to "Edit", edit_photo_path(@photo)
