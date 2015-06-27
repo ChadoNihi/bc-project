@@ -1,15 +1,16 @@
 .block
-	=image_tag(@photo.image.url, alt: "#{@photo.title}")
-	%h3= @photo.title
-	%span= "by #{@photo.author}"
-	.city-region-line
+	.photo-w-captions
+		=image_tag(@photo.image.url, alt: "#{@photo.title}")
+		%h3
+			= @photo.title
+			%span.note= "by #{@photo.author}"
 		= link_to city_path(@photo.city) do
 			%h4= @photo.city.name
 		= link_to region_path(@photo.city.region) do
 			%h4= @photo.city.region.name
-	= link_to "Get original", "#{@photo.source}"
-	\
-		= render 'cities/city_links', city: @photo.city
+		= link_to "Get original", "#{@photo.source}"
+		%p= raw @photo.all_tags
+	/= render 'cities/city_links', city: @photo.city
 	= render 'cities/city_gmap'
 		
 

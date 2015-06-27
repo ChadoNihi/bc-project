@@ -1,7 +1,6 @@
 .block
 	%h1= @city.name
-	/
-		= render 'city_links', city: @city
+	/= render 'city_links', city: @city
 	= render 'city_gmap'
 
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters

@@ -6,14 +6,21 @@ $ ->
 			if status == google.maps.GeocoderStatus.OK
 				mapOptions =
 					center: results[0].geometry.location
-					zoom: 8
+					zoom: 7
 				map = new google.maps.Map document.getElementById('map-canvas'), mapOptions
+
+				marker = new google.maps.Marker
+					position: map.getCenter()
+					map: map
+					title: address
+
+				weatherwindow = new google.maps.InfoWindow
+					content: "<p style='background: #000000;'>weather</p>"
+
+				weatherwindow.open map, marker
+
 			else
 				document.getElementById('map-canvas').value 'Map outage'
 
-        
-	initializeGmap "map-canvas"
-
-
-	if $('#gmap', 'main').length
-		google.maps.event.addDomListener window, 'load', initialize
+	if $('#map-canvas', 'main').length
+		initializeGmap "map-canvas"

@@ -7,7 +7,8 @@ class Photo < ActiveRecord::Base
   validates :title, :source, :author, length: { maximum: 255 }
 
   def all_tags
-  	self.tags.map(&:name).join(", ")
+  	#self.tags.map(&:name).join(", ")
+    self.tags.map {|tag| "<a href='#{Rails.application.routes.url_helpers.photos_path}'>#{tag.name}</a>"}.join(", ")
   end
 
   def all_tags=(l_of_t)

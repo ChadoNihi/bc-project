@@ -72,6 +72,7 @@ initPhotoSwipeFromDOM = (photoContainer, index) ->
         options =
             index: parseInt index, 10
             bgOpacity: 0.8
+            getThumbBoundsFn: undefined
             hideAnimationDuration: 0
             showAnimationDuration: 0
             history: false

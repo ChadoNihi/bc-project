@@ -3,15 +3,16 @@ body
 	background-size: cover
 	color: #ffffff
 	.pure-menu-heading
-		font-family: 'Niconne', cursive
+		font-family: 'Niconne', "Book Antiqua", Palatino, serif
 	input, select, textarea
 		color: #112
 	/*h1, h2, h3, h4, h5, h6*/
-	h1, h3, h5
-		margin-left: 24%
 	h2, h4, h6
 		margin: 0.7em 0 0.9em
-		margin-left: 50%
+	span
+		&.note
+			font-weight: 100
+			font-size: 70%
 	a
 		color: #ccccdd
 		color: rgba(240,240,255,0.55)
@@ -41,27 +42,41 @@ body
 			img
 				cursor: pointer
 				width: 480px
+			h2, h4, h6
+				margin: 0.7em 0 0.9em
 	.block, .box
 		background-color: #222222
-		background-color: rgba(0,0,0,0.60)
+		background-color: rgba(0,0,0,0.75)
 		border-radius: 16px
+		h4, .photo-w-captions
+			display: inline-block
 	.block
-		display: inline-block
+		display: block
 		max-width: 100%
-		margin: 0.5em auto
+		margin: 0.5em
 		padding: 0.05em 1em
+		text-align: center
+		h3
+			display: inline-block
+			float: left
+			margin-left: 3em
+
+		h4
+			float: right
 		img
 			margin: 1em auto
 	.city-region-line
-		h4
-			display: inline-block
 		a:last-child>h4
 			margin-left: 0
 	main
-		width: 94%
-		max-width: 86%
-	.clearfix
-		overflow: auto
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+		width: 70em
+		max-width: 100%
+		&.block
+			margin-right: auto
+			margin-left: auto
 	.photos-data
 		display: none
 	.hor-list
@@ -79,3 +94,6 @@ body
 	#map-canvas
 		width: 100%
 		max-width: 100%
+		height: 500px
+	.clearfix
+		overflow: auto
