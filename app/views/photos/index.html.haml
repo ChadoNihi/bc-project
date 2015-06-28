@@ -1,22 +1,24 @@
 .block
 	%ul.hor-list
 		%li= sortable 'created_at', 'Default'
-		%li= sortable 'title'
 		%li= sortable 'cities.name', 'City'
 		%li= sortable 'regions.name', 'Subcontinent'
 		%li= sortable 'RANDOM()', 'Shuffle'
+
 .photos-data= @photos.to_json
+
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
 	-@photos.each_with_index do |ph, i|
+		- city_name = city_name; region_name = region_name; author = author
 		.box
-			= link_to photo_path(ph) do
-				%h3= ph.title
-			=image_tag(ph.image.url, :alt => "#{ph.title}", :class => "city-photo", :data => { :index => "#{i}"})
-			.city-region-line
-				= link_to city_path(ph.city) do
-					%h4= ph.city.name
-				= link_to region_path(ph.city.region) do
-					%h4= ph.city.region.name
+			= link_to city_path(ph.city) do
+				%h4= city_name
+			=image_tag(ph.image.url, :alt => "photo of #{city_name}", :class => "city-photo", :data => { :index => i, :city => city_name, :region => region_name, :author => author, :file_path = ph.image_file_name})
+			= link_to region_path(ph.city.region) do
+				%h4= region_name
+			.fl-right
+				= link_to "Original", ph.source
+				%span.note= "by #{author}"
 /
 	%div(class="pswp" tabindex="-1" role="dialog" aria-hidden="true")
 		.pswp__bg

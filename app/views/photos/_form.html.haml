@@ -1,7 +1,7 @@
 = simple_form_for @photo, url: photos_path do |f|
 	= f.input :image, as: :file
 	= f.input :title
-	= f.input :source
+	= f.input :source, label: 'Source (URL)'
 	= f.input :author, label: 'Author of the photo'
 	= f.association :city
 	= f.input :all_tags, as: :text, label: 'Tags (separated by commas)'

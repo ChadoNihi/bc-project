@@ -2,7 +2,6 @@ $ ->
     return if $('.photos-data', 'main').length == 0
 
     startInitPhotoSwipe()
-    console.log "after startInitPhotoSwipe"
 
 startInitPhotoSwipe = ->
     pswpDom = '<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -77,24 +76,23 @@ initPhotoSwipeFromDOM = (photoContainer, index) ->
             showAnimationDuration: 0
             history: false
         return false if isNaN options.index
-        console.log slides
 
         gallery = new PhotoSwipe document.getElementsByClassName('pswp')[0], PhotoSwipeUI_Default, slides, options
-        console.log 'after PhotoSwipe new'
         gallery.init()
-        console.log 'after gellery init'
 
     parsePhotos = ->
         slides = []
-        JSON.parse document.getElementsByClassName('photos-data')[0].innerHTML
-            .forEach (obj) ->
+        #JSON.parse document.getElementsByClassName('photos-data')[0].innerHTML
+        document.getElementsByClassName('city-photo')
+            .forEach (phEl) ->
+                phData = phEl.dataset
+                console.log phEl
                 slides.push
-                    src: 'assets/'+obj.image_file_name
+                    src: 'assets/'+phEl.file_name
                     #src: 'https://farm4.staticflickr.com/3894/15008518202_c265dfa55f_h.jpg'
                     w: 640
                     h: 433
-                    title: obj.title
+                    title: "<a href='"+"/cities/"+phEl.city+"'>Test link</a>"
         slides
     
-    console.log "in initPhotoSwipeFromDOM"
     openPhotoSwipe photoContainer

@@ -1,8 +1,6 @@
 .block
 	.photo-w-captions
-		=image_tag(@photo.image.url, alt: "#{@photo.title}")
-		%h3
-			= @photo.title
+		=image_tag(@photo.image.url, alt: "photo of #{@photo.city}")
 			%span.note= "by #{@photo.author}"
 		= link_to city_path(@photo.city) do
 			%h4= @photo.city.name

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612111100) do
+ActiveRecord::Schema.define(version: 20150628081413) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20150612111100) do
   add_index "cities", ["region_id"], name: "index_cities_on_region_id"
 
   create_table "photos", force: :cascade do |t|
-    t.string   "title",              limit: 255
     t.string   "source",             limit: 255
     t.string   "author",             limit: 255
     t.integer  "city_id"

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :regions, :cities, :photos
 
+  get 'cities/:name' => 'cities#show'
+  get 'regions/:name' => 'regions#show'
+
 	root 'photos#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
