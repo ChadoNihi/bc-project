@@ -37,7 +37,11 @@ class CitiesController < ApplicationController
   private
 
   def retrieve_city
-    @city = City.find(params[:id])
+    begin
+      @city = City.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @city = City.where(params[:name]).first
+    end
   end
 
   def city_params

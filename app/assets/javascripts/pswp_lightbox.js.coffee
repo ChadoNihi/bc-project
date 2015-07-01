@@ -83,16 +83,17 @@ initPhotoSwipeFromDOM = (photoContainer, index) ->
     parsePhotos = ->
         slides = []
         #JSON.parse document.getElementsByClassName('photos-data')[0].innerHTML
-        document.getElementsByClassName('city-photo')
-            .forEach (phEl) ->
+        phEls = document.getElementsByClassName('city-photo')
+        for phEl in phEls
+            do (phEl) ->
                 phData = phEl.dataset
-                console.log phEl
+                console.log phData
                 slides.push
-                    src: 'assets/'+phEl.file_name
+                    src: 'assets/'+phData.filePath
                     #src: 'https://farm4.staticflickr.com/3894/15008518202_c265dfa55f_h.jpg'
                     w: 640
                     h: 433
-                    title: "<a href='"+"/cities/"+phEl.city+"'>Test link</a>"
+                    title: "<a href='"+"/cities/"+phData.city+"'>Test link</a>"
         slides
     
     openPhotoSwipe photoContainer

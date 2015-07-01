@@ -2,17 +2,16 @@ body
 	background: #111122 url(image-path('bg.jpg')) no-repeat fixed
 	background-size: cover
 	color: #ffffff
-	.pure-menu-heading
-		font-family: 'Niconne', "Book Antiqua", Palatino, serif
+	#menu
+		.pure-menu-heading
+			font-family: 'Niconne', "Book Antiqua", Palatino, serif
+			font-size: 120%
 	input, select, textarea
 		color: #112
 	/*h1, h2, h3, h4, h5, h6*/
-	h2, h4, h6
-		margin: 0.7em 0 0.9em
-	span
-		&.note
-			font-weight: 100
-			font-size: 70%
+	.sm-text
+		font-weight: 100
+		font-size: 70%
 	a
 		color: #ccccdd
 		color: rgba(240,240,255,0.55)
@@ -24,6 +23,9 @@ body
 		-o-transition: all 0.2s ease-in-out
 		-ms-transition: all 0.2s ease-in-out
 		transition: all 0.2s ease-in-out
+
+		&[href*="//"]:after
+			content: ' (ext)'
 
 		&.asc:after
 			content: ' ▲'
@@ -38,28 +40,36 @@ body
 			color: #ffffff
 			margin: 1em 0
 			max-width: 100%
-			padding: 0 0.8em
+			padding: 0.8em 0.8em 0
 			img
+				box-shadow: 5px 14px 80px 25px rgba(0,0,0,0.85)
 				cursor: pointer
+				position: relative
 				width: 480px
-			h2, h4, h6
-				margin: 0.7em 0 0.9em
+				z-index: -1
+			h3, h5, span
+				margin: 6px 0 5px
+			h3
+				font-size: 118%
+			h5
+				font-size: 96%
 	.block, .box
-		background-color: #222222
-		background-color: rgba(0,0,0,0.75)
-		border-radius: 16px
-		h4, .photo-w-captions
+		//background-color: #222222
+		//background-color: rgba(0,0,0,0.70)
+		//background: linear-gradient(rgba(0,0,0,0.70), rgba(0,0,0,0) 40%, rgba(0,0,0,0.75))
+		//border-radius: 20px 20px 26px 6px
+		h2, h4, h3, h5
 			display: inline-block
+			font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif
+			font-variant: small-caps
+			font-weight: 600
+			margin-left: 0.7em
 	.block
 		display: block
 		max-width: 100%
 		margin: 0.5em
-		padding: 0.05em 1em
+		padding: 0.05em 1em 1em
 		text-align: center
-		h3
-			display: inline-block
-			float: left
-			margin-left: 3em
 		img
 			margin: 1em auto
 	main
@@ -71,6 +81,9 @@ body
 		&.block
 			margin-right: auto
 			margin-left: auto
+	.num-line
+		font-size: 90%
+		margin-left: 1em
 	.photos-data
 		display: none
 	.hor-list

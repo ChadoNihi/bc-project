@@ -3,6 +3,7 @@ class Photo < ActiveRecord::Base
   has_and_belongs_to_many :tags, join_table: :taggings
   has_attached_file :image, :styles => { :list => "460x400>"}, :default_url => "/images/missing.jpg"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validates :city, presence: true
   validates :city_id, numericality: { only_integer: true }
   validates :source, :author, length: { maximum: 255 }
 

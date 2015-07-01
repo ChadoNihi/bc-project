@@ -1,11 +1,16 @@
 .block
-	%h1= @city.name
+	%h2= @city.name
+	%span.num-line 24°C (88°F)
+	%span.num-line &#128337; 20:13:56
+	= link_to region_path(@city.region), { :class=>"fl-right" } do
+		%h4= @city.region.name
 	/= render 'city_links', city: @city
-	= render 'city_gmap'
+	/= render 'city_gmap'
 
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
 	- @city.photos.each_with_index do |ph, i|
-		= link_to photo_path(ph) do
-			.box
-				%h5= ph.title
-				=image_tag(ph.image.url, :alt => "#{ph.title}", :class => "city-photo", :data => { :index => "#{i}"})
+		.box
+			=image_tag(ph.image.url, :alt => "#photo of {@city.name}", :class => "city-photo", :data => { :index => i})
+			%span.sm-text.fl-right
+				= "by #{ph.author} / "
+				= link_to "Source", ph.source
