@@ -1,9 +1,13 @@
 .block
-	%h2= @city.name
-	%span.num-line 24°C (88°F)
-	%span.num-line &#128337; 20:13:56
-	= link_to region_path(@city.region), { :class=>"fl-right" } do
-		%h4= @city.region.name
+	%h2
+		= @city.name
+		%div
+			= link_to "W", {:target=>"_blank" }
+			= link_to "Gmap", {:target=>"_blank" }
+	%span.num-line.vert-al-super 24°C (88°F)
+	%span.num-line.vert-al-super &#128337; 20:13:56
+	= link_to region_path(@city.region), { :class=>"vert-al-top" } do
+		%h3= @city.region.name
 	/= render 'city_links', city: @city
 	/= render 'city_gmap'
 

@@ -21,6 +21,9 @@ $ ->
 
 			else
 				document.getElementById('map-canvas').value 'Map outage'
-
-	if $('#map-canvas', 'main').length
+	$('gmap-btn', '.block').on 'click' showMap
+	document.getElementsByClassName('gmap-btn')[0].addEventListener showMap, false
+	###
+		if $('#map-canvas', 'main').length
 		initializeGmap "map-canvas"
+	###
