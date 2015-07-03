@@ -2,8 +2,8 @@
 	%h2
 		= @city.name
 		%div
-			= link_to "W", {:target=>"_blank" }
-			= link_to "Gmap", {:target=>"_blank" }
+			= link_to "W", "https://en.wikipedia.org/wiki/#{@city.name}", {:target=>"_blank" }
+			= link_to "Gmap", "https://www.google.com/maps/place/#{@city.name}", {:target=>"_blank" }
 	%span.num-line.vert-al-super 24°C (88°F)
 	%span.num-line.vert-al-super &#128337; 20:13:56
 	= link_to region_path(@city.region), { :class=>"vert-al-top" } do

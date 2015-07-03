@@ -1,2 +1,7 @@
-%h1 Regions#show
-%p Find me in app/views/regions/show.html.haml
+.block
+	%h2
+		= @region.name
+		%div
+			= link_to "Gmap", "https://www.google.com/maps/place/#{@region.name}", {:target=>"_blank" }
+
+= render 'photos/photos', photos: Photo.joins(:city).where("cities.region_id = ?", @region.id)

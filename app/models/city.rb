@@ -6,4 +6,17 @@ class City < ActiveRecord::Base
   validates :region, presence: true
   validates :name, length: { minimum: 1, maximum: 127 }
   validates :region_id, numericality: { only_integer: true }
+
+  def self.fst_cities_letters(cities)
+  	letterToOccured = Hash[([*'A'..'Z']+[*'0'..'9']).map {|l| [l, false]}]
+  	cities.each do |city|
+  		fstLetter = city.name[0]
+  		letterToOccured[fstLetter] = true unless letterToOccured[fstLetter]
+  	end
+    letterToOccured.keys.select { |k| letterToOccured[k] }
+  end
+
+  def name=(s)
+    super s.titleize
+  end
 end

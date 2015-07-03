@@ -1,6 +1,9 @@
+.block
+	%h4
+		-@fst_cities_letters.each do |fst_letter|
+			= link_to fst_letter, {:fst_letter => fst_letter}
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
 	-@cities.each do |city|
 		.box
 			= link_to city_path(city) do
 				%h3= city.name
-				=image_tag(city.image.url(:list))

@@ -2,6 +2,9 @@ class CitiesController < ApplicationController
   before_action :retrieve_city, only: [:show, :edit, :update, :destroy]
 
   def index
+    fst_letter = params[:fst_letter]
+    @cities = fst_letter.nil? ? City.all : City.where("name like ?", fst_letter<<'%')
+    @fst_cities_letters = fst_letter.nil? ? City.fst_cities_letters(@cities) : City.fst_cities_letters(City.all)
   end
 
   def show
