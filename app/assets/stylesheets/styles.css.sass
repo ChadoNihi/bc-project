@@ -51,6 +51,7 @@ body
 				cursor: pointer
 				position: relative
 				width: 480px
+				max-width: 100%
 				z-index: -1
 			h3, h5, span
 				margin: 6px 0 5px
@@ -90,6 +91,9 @@ body
 	.num-line
 		font-size: 90%
 		margin-left: 1em
+		&[data-utcoffset]:before
+			content: "🕑"
+			
 	.photos-data
 		display: none
 	.hor-list
