@@ -5,6 +5,8 @@ class City < ActiveRecord::Base
   validates_attachment_content_type :title_photo, :content_type => /\Aimage\/.*\Z/
   validates :region, presence: true
   validates :name, length: { minimum: 1, maximum: 127 }
+  validates :utcoffset, length: { minimum: 1, maximum: 6 }
+  validates_format_of :utcoffset, :with => /\A[+|-]?[0-1]?\d(:[0-5][05]?)?\z/i
   validates :region_id, numericality: { only_integer: true }
 
   def self.fst_cities_letters(cities)

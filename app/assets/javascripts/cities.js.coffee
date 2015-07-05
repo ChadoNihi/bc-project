@@ -1,7 +1,10 @@
 $ ->
 	timerEl = document.querySelector('.num-line[data-utcoffset]')
 	if timerEl
-		time = new Date(new Date().getTime() + parseInt(timerEl.dataset.utcoffset, 10) * 3600000)
+		utcoffsetMatch = timerEl.dataset.utcoffset.match /[+|-]?\d{1,2}/
+		utcoffsetH = parseInt utcoffsetMatch[0], 10
+		utcoffsetM = parseInt(utcoffsetMatch[1], 10) || 0
+		time = new Date(new Date().getTime() + utcoffsetH * 3600000 + utcoffsetM * 60000)
 		h = time.getHours()
 		m = time.getMinutes()
 		s = time.getSeconds()
