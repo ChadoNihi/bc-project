@@ -21,4 +21,12 @@ class City < ActiveRecord::Base
   def name=(s)
     super s.titleize
   end
+
+  def self.find_user_city_in_db
+    #userCity = request.location.city
+    userCity = "Test"
+    userCity = 'invisible' if userCity.nil?
+
+    return userCity
+  end
 end

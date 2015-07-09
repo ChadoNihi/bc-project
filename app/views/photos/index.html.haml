@@ -4,10 +4,10 @@
 		%li= sortable 'cities.name', 'City'
 		%li= sortable 'regions.name', 'Region'
 		%li= sortable 'RANDOM()', 'Shuffle'
-/
-	.photos-data= @photos.to_json
 
 = render 'photos', photos: @photos
+
+#index(style='display: none')
 /
 	%div(class="pswp" tabindex="-1" role="dialog" aria-hidden="true")
 		.pswp__bg

@@ -19,10 +19,11 @@
 					%ul.pure-menu-list
 						%li.pure-menu-item
 							= nav_link_to "Cities", cities_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
+						/
+							%li.pure-menu-item
+								= nav_link_to "Regions", regions_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
 						%li.pure-menu-item
-							= nav_link_to "Regions", regions_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
-						%li.pure-menu-item
-							= nav_link_to "My city", city_path(City.find_by(name: request.location.city)||2), { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
+							= nav_link_to "Your city", city_path(City.find_user_city_in_db), { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
 						%li.pure-menu-item
 							= nav_link_to "Random city", city_path(City.offset(rand(City.count)).first), { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
 						- if admin?
@@ -30,6 +31,9 @@
 								= nav_link_to "New photo", new_photo_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
 							%li.pure-menu-item
 								= nav_link_to "New city", new_city_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
+			- flash.each do |k, v|
+				%div{:class => "flash #{k}"}= v
+
 			%main
 				= yield
 			/

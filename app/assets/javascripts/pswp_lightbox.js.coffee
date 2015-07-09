@@ -1,5 +1,5 @@
 $ ->
-    return if $('.photos-data', 'main').length == 0
+    return if document.querySelector('.city-photo') == null
 
     startInitPhotoSwipe()
 
@@ -62,6 +62,7 @@ startInitPhotoSwipe = ->
 
 </div>'
     document.getElementsByTagName('main')[0].insertAdjacentHTML 'beforeend', pswpDom
+
     $('#masonry-container').on 'click', '.city-photo', ->
         initPhotoSwipeFromDOM '#masonry-container', $(this).data 'index'
 
@@ -82,12 +83,10 @@ initPhotoSwipeFromDOM = (photoContainer, index) ->
 
     parsePhotos = ->
         slides = []
-        #JSON.parse document.getElementsByClassName('photos-data')[0].innerHTML
         phEls = document.getElementsByClassName('city-photo')
         for phEl in phEls
             do (phEl) ->
                 phData = phEl.dataset
-                console.log phData
                 slides.push
                     src: 'assets/'+phData.filePath
                     #src: 'https://farm4.staticflickr.com/3894/15008518202_c265dfa55f_h.jpg'

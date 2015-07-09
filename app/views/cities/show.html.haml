@@ -5,12 +5,15 @@
 			= link_to "W", "https://en.wikipedia.org/wiki/#{@city.name}", {:target=>"_blank" }
 			= link_to "Gmap", "https://www.google.com/maps/place/#{@city.name}", {:target=>"_blank" }
 	%span.num-line.vert-al-super 24°C (88°F)
-	%span.num-line.vert-al-super{:data =>{:utcoffset => (@city.utcoffset || '-8')}} 20:13:56
+	%span.num-line.vert-al-super{:data =>{:utcoffset => (@city.utcoffset || '0')}} 00:00:00
 	= link_to region_path(@city.region), { :class=>"vert-al-top" } do
 		%h3= @city.region.name
 	/= render 'city_links', city: @city
 	/= render 'city_gmap'
-
+.block
+	%ul.hor-list
+		%li= sortable 'created_at', 'Default'
+		%li= sortable 'RANDOM()', 'Shuffle'
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
 	- @city.photos.each_with_index do |ph, i|
 		.box

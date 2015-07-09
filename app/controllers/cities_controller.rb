@@ -1,13 +1,28 @@
 class CitiesController < ApplicationController
-  before_action :retrieve_city, only: [:show, :edit, :update, :destroy]
+  before_action :retrieve_city, only: [:show, :edit, :update, :destroy, :user_city_fail]
 
   def index
-    fst_letter = params[:fst_letter]
-    @cities = fst_letter.nil? ? City.all : City.where("name like ?", fst_letter<<'%')
-    @fst_cities_letters = fst_letter.nil? ? City.fst_cities_letters(@cities) : City.fst_cities_letters(City.all)
+    @cities = []
+
+    if not params[:fst_letter].nil?
+      @cities += City.where("name like ?", params[:fst_letter]<<'%')
+    elsif not params[:region_name].nil?
+      @cities += City.where(region_id: (Region.find_by(name: params[:region_name]).id) )
+    else
+      @cities += City.all
+    end
+
+    @fst_cities_letters = params[:fst_letter].nil? ? City.fst_cities_letters(@cities) : City.fst_cities_letters(City.all)
   end
 
   def show
+    user_city_name = params[:id] if @city.nil?
+
+    if params[:id] == 'invisible'
+      redirect_to cities_path, notice: "We cannot work out your location. Try find it on this page."
+    elsif @city.nil?
+      redirect_to :back, notice: "Sorry, \"#{user_city_name}\" is not in our collection."
+    end
   end
 
   def new
@@ -37,13 +52,24 @@ class CitiesController < ApplicationController
   def destroy
   end
 
+  def user_city_fail
+    user_city_name = params[:name] if @city.nil?
+
+    if @city.nil?
+      flash.now[:notice] = "You're sneaky! We cannot work out your location."
+    else
+      flash.now[:notice] = "Sorry, #{user_city_name} is not in our collection."
+    end
+        
+  end
+
   private
 
   def retrieve_city
     begin
       @city = City.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      @city = City.where(params[:name]).first
+      @city = City.find_by(name: params[:name])
     end
   end
 

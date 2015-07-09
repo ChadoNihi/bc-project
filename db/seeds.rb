@@ -5,4 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Region.create([ {name: 'North America'}, {name: 'Western Europe'}, {name: 'South America'} ])
+Region.create([ {name: 'Eastern Europe'}, {name: 'Oceania'}, {name: 'East Asia'} ])
