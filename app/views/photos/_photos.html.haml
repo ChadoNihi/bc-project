@@ -3,10 +3,11 @@
 		- city_name = ph.city.name; region_name = ph.city.region.name; author = ph.author;
 		.box
 			=image_tag(ph.image.url, :alt => "photo of #{city_name}", :class => "city-photo", :data => { :index => i, :city => city_name, :region => region_name, :author => author, :file_path => ph.image_file_name})
-			= link_to city_path(ph.city) do
-				%h3= city_name
-			= link_to region_path(ph.city.region) do
-				%h5= region_name
+			- if displayCityRegionNames
+				= link_to city_path(ph.city) do
+					%h3= city_name
+				= link_to region_path(ph.city.region) do
+					%h5= region_name
 			
 			%span.sm-text.fl-right
 				= "by #{author} / "

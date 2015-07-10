@@ -4,9 +4,11 @@ $ ->
 			itemSelector: '.box'
 			gutterWidth: 20
 			isFitWidth: true
-
-	if index
-		for a, i in document.querySelectorAll('main .block ul.hor-list li a')
-			do (a) ->
-				a.style.animation = 'list-letters-apart 1.5s'
-				a.style.animationDelay = i*0.3+'s'
+###
+	if false
+		for arrow, i in document.querySelectorAll('main .block ul.hor-list li a:after')
+			do (arrow) ->
+				arrow.style.animation = 'rotate-3d 3s'
+				arrow.style.animationFillMode = 'forwards'
+				arrow.style.animationDelay = i*0.3+'s'
+###

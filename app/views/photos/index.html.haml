@@ -1,11 +1,14 @@
-.block
-	%ul.hor-list
+.block.with-separator
+	%ul.hor-list.inline-subblock
 		%li= sortable 'created_at', 'Default'
 		%li= sortable 'cities.name', 'City'
 		%li= sortable 'regions.name', 'Region'
 		%li= sortable 'RANDOM()', 'Shuffle'
+	= will_paginate @photos, :class => "pagination inline-subblock", :previous_label => ""
 
-= render 'photos', photos: @photos
+= render 'photos', photos: @photos, displayCityRegionNames: true
+.block
+	= will_paginate @photos, :class => "pagination"
 
 #index(style='display: none')
 /

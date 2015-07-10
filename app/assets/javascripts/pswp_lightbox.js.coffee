@@ -89,10 +89,9 @@ initPhotoSwipeFromDOM = (photoContainer, index) ->
                 phData = phEl.dataset
                 slides.push
                     src: 'assets/'+phData.filePath
-                    #src: 'https://farm4.staticflickr.com/3894/15008518202_c265dfa55f_h.jpg'
                     w: 640
                     h: 433
-                    title: "<a href='"+"/cities/"+phData.city+"'>Test link</a>"
+                    title: "<a href='/cities/"+phData.city+"'>"+phData.city
         slides
     
     openPhotoSwipe photoContainer

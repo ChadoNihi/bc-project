@@ -14,10 +14,16 @@
 	%ul.hor-list
 		%li= sortable 'created_at', 'Default'
 		%li= sortable 'RANDOM()', 'Shuffle'
-#masonry-container.transitions-enabled.infinite-scroll.has-gutters
-	- @city.photos.each_with_index do |ph, i|
-		.box
-			=image_tag(ph.image.url, :alt => "#photo of {@city.name}", :class => "city-photo", :data => { :index => i})
-			%span.sm-text.fl-right
-				= "by #{ph.author} / "
-				= link_to "Source", ph.source
+
+= render 'photos/photos', photos: @city.photos, displayCityRegionNames: false
+
+
+
+/
+	#masonry-container.transitions-enabled.infinite-scroll.has-gutters
+		- @city.photos.each_with_index do |ph, i|
+			.box
+				=image_tag(ph.image.url, :alt => "#photo of {@city.name}", :class => "city-photo", :data => { :index => i})
+				%span.sm-text.fl-right
+					= "by #{ph.author} / "
+					= link_to "Source", ph.source
