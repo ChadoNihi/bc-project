@@ -1,27 +1,30 @@
 .block
+	%span.num-line.vert-al-super 24°C (88°F)
 	%h2
+		= link_to "⤆", city_path( 2 || @city.prev )
 		= @city.name
+		= link_to "⤇", city_path( 2 || @city.next )
 		%div
 			= link_to "W", "https://en.wikipedia.org/wiki/#{@city.name}", {:target=>"_blank" }
 			= link_to "Gmap", "https://www.google.com/maps/place/#{@city.name}", {:target=>"_blank" }
-	%span.num-line.vert-al-super 24°C (88°F)
 	%span.num-line.vert-al-super{:data =>{:utcoffset => (@city.utcoffset || '0')}} 00:00:00
 	= link_to region_path(@city.region), { :class=>"vert-al-top" } do
 		%h3= @city.region.name
 	/= render 'city_links', city: @city
 	/= render 'city_gmap'
-.block
-	%ul.hor-list
+.block.with-separator
+	%ul.hor-list.inline-subblock
 		%li= sortable 'created_at', 'Default'
 		%li= sortable 'RANDOM()', 'Shuffle'
+	= will_paginate @city_photos, :class => "pagination inline-subblock", :per_page => 5
 
-= render 'photos/photos', photos: @city.photos, displayCityRegionNames: false
+= render 'photos/photos', photos: @city_photos, displayCitiesNames: false, displayRegionsNames: false
 
 
 
 /
 	#masonry-container.transitions-enabled.infinite-scroll.has-gutters
-		- @city.photos.each_with_index do |ph, i|
+		- @city_photos.each_with_index do |ph, i|
 			.box
 				=image_tag(ph.image.url, :alt => "#photo of {@city.name}", :class => "city-photo", :data => { :index => i})
 				%span.sm-text.fl-right

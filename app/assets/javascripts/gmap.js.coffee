@@ -1,4 +1,4 @@
-$ ->
+$(document).on "page:change", ->
 	initializeGmap = (idSelec) ->
 		geocoder = new google.maps.Geocoder()
 		address = 'Zurich, Western Europe'

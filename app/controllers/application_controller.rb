@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def sort_option
-		['created_at','title','city.name','RANDOM()'].include?(params[:sort]) ? params[:sort] : "created_at"
+		['created_at','regions.name','cities.name','RANDOM()'].include?(params[:sort]) ? params[:sort] : "created_at"
 	end
 
 	def sort_direction

@@ -19,9 +19,8 @@
 					%ul.pure-menu-list
 						%li.pure-menu-item
 							= nav_link_to "Cities", cities_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
-						/
-							%li.pure-menu-item
-								= nav_link_to "Regions", regions_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
+						%li.pure-menu-item
+							= nav_link_to "Regions", regions_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
 						%li.pure-menu-item
 							= nav_link_to "Your city", city_path(City.find_user_city_in_db), { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
 						%li.pure-menu-item

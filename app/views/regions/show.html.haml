@@ -1,7 +1,11 @@
 .block
 	%h2
+		/- minId = Region.all(:select => :id).collect(&:id).min
+		/- maxId = Region.all(:select => :id).collect(&:id).max
+		= link_to "⤆", region_path( 2 || @region.prev )
 		= @region.name
+		= link_to "⤇", region_path( 2 || @region.next )
 		%div
 			= link_to "Gmap", "https://www.google.com/maps/place/#{@region.name}", {:target=>"_blank" }
 
-= render 'photos/photos', photos: Photo.joins(:city).where("cities.region_id = ?", @region.id)
+= render 'photos/photos', photos: Photo.joins(:city).where("cities.region_id = ?", @region.id), displayCitiesNames: true, displayRegionsNames: false

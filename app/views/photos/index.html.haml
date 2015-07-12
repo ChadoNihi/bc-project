@@ -4,11 +4,9 @@
 		%li= sortable 'cities.name', 'City'
 		%li= sortable 'regions.name', 'Region'
 		%li= sortable 'RANDOM()', 'Shuffle'
-	= will_paginate @photos, :class => "pagination inline-subblock", :previous_label => ""
+	= will_paginate @photos, :class => "pagination inline-subblock"
 
-= render 'photos', photos: @photos, displayCityRegionNames: true
-.block
-	= will_paginate @photos, :class => "pagination"
+= render 'photos', photos: @photos, displayCitiesNames: true, displayRegionsNames: true
 
 #index(style='display: none')
 /

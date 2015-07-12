@@ -23,6 +23,8 @@ class CitiesController < ApplicationController
     elsif @city.nil?
       redirect_to :back, notice: "Sorry, \"#{user_city_name}\" is not in our collection."
     end
+
+    @city_photos = @city.photos.paginate(:page => params[:page], :per_page => 3)
   end
 
   def new

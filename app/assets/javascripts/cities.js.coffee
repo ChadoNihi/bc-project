@@ -1,4 +1,4 @@
-$ ->
+$(document).on "page:change", ->
 	timerEl = document.querySelector('.num-line[data-utcoffset]')
 	if timerEl
 		utcoffsetMatch = timerEl.dataset.utcoffset.match /[+|-]?\d{1,2}/

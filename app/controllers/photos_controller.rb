@@ -1,7 +1,15 @@
 class PhotosController < ApplicationController
 	before_action :retrieve_photo, only: [:show, :edit, :update, :destroy]
 	def index
-		@photos = Photo.paginate(:page => params[:page], :per_page => 5)  #.order(sort_option + " " + sort_direction)
+		@photos = nil
+		if params[:sort] == "cities.name"
+			@photos = Photo.joins(:cities).order("cities.name "+sort_direction)
+		elsif params[:sort] == "regions.name"
+			@photos = Photo.joins(:regions).order("regions.name"+sort_direction)
+		else
+			@photos = Photo.order(sort_option + " " + sort_direction)
+		end
+		@photos = @photos.paginate(:page => params[:page])
 	end
 
 	def show

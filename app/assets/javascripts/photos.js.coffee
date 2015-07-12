@@ -1,4 +1,4 @@
-$ ->
+$(document).on "page:change", ->
 	$('#masonry-container').imagesLoaded ->
 		$('#masonry-container').masonry
 			itemSelector: '.box'

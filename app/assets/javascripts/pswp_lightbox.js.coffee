@@ -1,4 +1,4 @@
-$ ->
+$(document).on "page:change", ->
     return if document.querySelector('.city-photo') == null
 
     startInitPhotoSwipe()
