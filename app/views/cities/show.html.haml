@@ -1,5 +1,5 @@
 .block
-	%span.num-line.vert-al-super 24°C (88°F)
+	%span.num-line.vert-al-super{:data =>{:temp => City.get_temp(@city.name), :city => @city.name}}= ''
 	%h2
 		= link_to "⤆", city_path( 2 || @city.prev )
 		= @city.name
@@ -16,7 +16,7 @@
 	%ul.hor-list.inline-subblock
 		%li= sortable 'created_at', 'Default'
 		%li= sortable 'RANDOM()', 'Shuffle'
-	= will_paginate @city_photos, :class => "pagination inline-subblock", :per_page => 5
+	= will_paginate @city_photos, :class => "pagination inline-subblock"
 
 = render 'photos/photos', photos: @city_photos, displayCitiesNames: false, displayRegionsNames: false
 

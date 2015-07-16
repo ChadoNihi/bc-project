@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :regions, :cities, :photos
+  resources :regions, :photos
 
-  #get 'cities/not-in-the-db' => 'cities#user_city_fail'
+  resources :cities do
+    post 'weatherupdt', on: :collection
+  end
 
 	root 'photos#index'
   # The priority is based upon order of creation: first created -> highest priority.

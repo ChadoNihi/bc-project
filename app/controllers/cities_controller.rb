@@ -24,7 +24,7 @@ class CitiesController < ApplicationController
       redirect_to :back, notice: "Sorry, \"#{user_city_name}\" is not in our collection."
     end
 
-    @city_photos = @city.photos.paginate(:page => params[:page], :per_page => 3)
+    @city_photos = @city.photos.order(sort_option + " " + sort_direction).paginate(:page => params[:page], :per_page => 3)
   end
 
   def new
@@ -43,6 +43,11 @@ class CitiesController < ApplicationController
         format.json { render json: @city.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def weatherupdt
+    #if request.headers['origin'] ==
+      City.set_temp(params[:main][:temp], params[:name], params[:weather][:description])
   end
 
   def edit

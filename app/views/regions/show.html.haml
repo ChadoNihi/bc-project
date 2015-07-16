@@ -7,5 +7,11 @@
 		= link_to "⤇", region_path( 2 || @region.next )
 		%div
 			= link_to "Gmap", "https://www.google.com/maps/place/#{@region.name}", {:target=>"_blank" }
+.block.with-separator
+	%ul.hor-list.inline-subblock
+		%li= sortable 'created_at', 'Default'
+		%li= sortable 'cities.name', 'City'
+		%li= sortable 'RANDOM()', 'Shuffle'
+	= will_paginate @region_photos, :class => "pagination inline-subblock"
 
-= render 'photos/photos', photos: Photo.joins(:city).where("cities.region_id = ?", @region.id), displayCitiesNames: true, displayRegionsNames: false
+= render 'photos/photos', photos: @region_photos, displayCitiesNames: true, displayRegionsNames: false

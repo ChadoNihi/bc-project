@@ -3,9 +3,9 @@ class PhotosController < ApplicationController
 	def index
 		@photos = nil
 		if params[:sort] == "cities.name"
-			@photos = Photo.joins(:cities).order("cities.name "+sort_direction)
+			@photos = Photo.joins(:city).order("cities.name "+sort_direction)
 		elsif params[:sort] == "regions.name"
-			@photos = Photo.joins(:regions).order("regions.name"+sort_direction)
+			@photos = Photo.joins({:city => :region}).order("regions.name "+sort_direction)
 		else
 			@photos = Photo.order(sort_option + " " + sort_direction)
 		end
