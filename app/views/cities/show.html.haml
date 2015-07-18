@@ -1,9 +1,10 @@
 .block
-	%span.num-line.vert-al-super{:data =>{:temp => City.get_temp(@city.name), :city => @city.name}}= ''
+	- w = City.get_weather(@city.name)
+	%span.num-line.vert-al-super{:data =>{:temp => w[0], :city => @city.name, :icon_url => w[1], :descr => w[2]}}= ''
 	%h2
-		= link_to "⤆", city_path( 2 || @city.prev )
+		= link_to "⤆", city_path(@city.prev )
 		= @city.name
-		= link_to "⤇", city_path( 2 || @city.next )
+		= link_to "⤇", city_path(@city.next )
 		%div
 			= link_to "W", "https://en.wikipedia.org/wiki/#{@city.name}", {:target=>"_blank" }
 			= link_to "Gmap", "https://www.google.com/maps/place/#{@city.name}", {:target=>"_blank" }

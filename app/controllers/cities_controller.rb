@@ -47,7 +47,8 @@ class CitiesController < ApplicationController
 
   def weatherupdt
     #if request.headers['origin'] ==
-      City.set_temp(params[:main][:temp], params[:name], params[:weather][:description])
+      City.set_weather(params[:temp], params[:name], params[:icon], params[:dt], params[:descr])
+      redirect_to(:back)
   end
 
   def edit

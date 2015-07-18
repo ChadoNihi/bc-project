@@ -103,9 +103,20 @@ body
 			margin-right: auto
 			margin-left: auto
 
+	.black-white
+		filter: gray /* IE6-9 */
+		filter: grayscale(1) /* Firefox 35+ */
+		-webkit-filter: grayscale(1)
+
 	.num-line
 		font-size: 90%
 		margin-left: 1em
+		&>img
+			bottom: -1em
+			display: inline-block
+			margin: 0
+			position: relative
+			width: 2.5em
 		&[data-utcoffset]:before
 			content: "🕑"
 			

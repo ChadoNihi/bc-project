@@ -9,25 +9,25 @@ class City < ActiveRecord::Base
   validates_format_of :utcoffset, :with => /\A[+|-]?[0-1]?\d(:[0-5][05]?)?\z/i
   validates :region_id, numericality: { only_integer: true }
 
-  # mist, thunderstorm, moderate rain, clear
-  @maxRetentionPeriod = 1500 #sec (== 25min)
+  # mist, thunderstorm, moderate rain, clear, light intensity shower rain
+  @maxTimeBetweenMeasures = 4800 #sec (== 80min)
   @weatherCondToIcon = {'sun' => '☀', 'cloud' => '☁'}
   @weather = {}
 
-  def self.get_temp(city_name)
-    city_name = city_name.to_sym
+  def self.get_weather(city_name)
+    city_weather_data = @weather[city_name.to_sym]
+    return ['n'] if city_weather_data.nil?
     now = Time.now
-    return 'n' if @weather[city_name].nil?
 
-    if now - @weather[city_name][:obtained_at] < @maxRetentionPeriod
-      return @weather[city_name][:temp]
+    if (now - city_weather_data[:obtained_at]).to_i < @maxTimeBetweenMeasures
+      return [city_weather_data[:temp], city_weather_data[:icon_url], city_weather_data[:descr]]
     else
-      return 'n' #let JS do ajax
+      return ['n'] #let JS do ajax
     end
   end
 
-  def self.set_temp(temp, city_name, descr)
-    @weather[city_name.titleize.to_sym] = {:temp => temp, :description => descr}
+  def self.set_weather(temp, city_name, icon_flname, obtained_at, descr)
+    @weather[city_name.titleize.to_sym] = {:temp => temp, :icon_url => "http://openweathermap.org/img/w/#{icon_flname}.png", :obtained_at => obtained_at.to_i, :descr => descr}
   end
 
   def self.fst_cities_letters(cities)
@@ -49,5 +49,13 @@ class City < ActiveRecord::Base
     userCity = 'invisible' if userCity.nil?
 
     return userCity
+  end
+
+  def next
+    2
+  end
+
+  def prev
+    2
   end
 end

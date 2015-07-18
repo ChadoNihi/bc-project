@@ -25,21 +25,28 @@ $(document).on 'page:change', ->
 
 		if elData.temp != 'n'
 			tempK = parseInt(elData.temp, 10)
-			weatherEl.textContent = weatherEl.textContent + "#{Math.round(tempK - 273.15)}°C (#{Math.round(tempK*1.8 - 459.67)}°F)"
+			weatherEl.innerHTML = "<img src='#{elData.iconUrl}' alt='#{elData.descr}' class='black-white'>#{Math.round(tempK - 273.15)}°C (#{Math.round(tempK*1.8 - 459.67)}°F)"
 		else
 			$.ajax(
 				url: "http://api.openweathermap.org/data/2.5/weather?q=#{elData.city}&APPID="
 				dataType: 'json'
 				)
 				.done (resp) ->
-					console.log resp
 					weatherData = JSON.parse(JSON.stringify resp)
-					console.log weatherData.main.temp
-					$.post '/cities/weatherupdt', resp
-					weatherEl.textContent = weatherEl.textContent + "#{Math.round(weatherData.main.temp - 273.15)}°C (#{Math.round(weatherData.main.temp*1.8 - 459.67)}°F)"
+					temp = weatherData.main.temp
+					descr = weatherData.weather[0].main
+					icon = weatherData.weather[0].icon
+
+					$.post '/cities/weatherupdt',
+						temp: temp
+						name: resp.name
+						descr: descr
+						icon: icon
+						dt: resp.dt
+					weatherEl.innerHTML = "<img src='http://openweathermap.org/img/w/#{icon}.png' alt='#{descr}' class='black-white'>#{Math.round(temp - 273.15)}°C (#{Math.round(temp*1.8 - 459.67)}°F)"
 
 				.fail () ->
-					weatherEl.textContent = ''
+					weatherEl.innerHTML = ''
 
 	handleTime()
 	handleWeather()
