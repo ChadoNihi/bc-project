@@ -1,8 +1,8 @@
 #masonry-container.transitions-enabled.has-gutters
 	-photos.each_with_index do |ph, i|
-		- city_name = ph.city.name; region_name = ph.city.region.name; author = ph.author;
+		- city_name = ph.city.name; region_name = ph.city.region.name; author = ph.author; source = ph.source
 		.box
-			=image_tag(ph.image.url, :alt => "photo of #{city_name}", :class => "city-photo", :data => { :index => i, :city => city_name, :region => region_name, :author => author, :file_path => ph.image_file_name})
+			=image_tag(ph.image.url, :alt => "photo of #{city_name}", :class => "city-photo", :data => { :index => i, :city => city_name, :region => region_name, :author => author, :source => source, :file_path => ph.image_file_name})
 			- if displayCitiesNames
 				= link_to city_path(ph.city) do
 					%h3= city_name
@@ -12,6 +12,6 @@
 			
 			%span.sm-text.fl-right
 				= "by #{author} / "
-				= link_to "Source", ph.source
+				= link_to "Source", source
 .block
 	= will_paginate photos, :class => "pagination", :per_page => 3

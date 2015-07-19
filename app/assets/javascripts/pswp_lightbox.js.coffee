@@ -75,7 +75,6 @@ initPhotoSwipeFromDOM = (photoContainer, index) ->
             getThumbBoundsFn: undefined
             hideAnimationDuration: 0
             showAnimationDuration: 0
-            history: false
         return false if isNaN options.index
 
         gallery = new PhotoSwipe document.getElementsByClassName('pswp')[0], PhotoSwipeUI_Default, slides, options
@@ -91,7 +90,8 @@ initPhotoSwipeFromDOM = (photoContainer, index) ->
                     src: 'assets/'+phData.filePath
                     w: 640
                     h: 433
-                    title: "<a href='/cities/"+phData.city+"'>"+phData.city
+                    title: "<a href='/cities/#{phData.city}'><h3>#{phData.city}</h3></a><a href='/regions/#{phData.region}'><h5>#{phData.region}</h5></a>"
+                    authorNSource: "<span class='sm-text fl-right'>by #{phData.author} / <a href='#{phData.source}'>Source</a></span>"
         slides
     
     openPhotoSwipe photoContainer

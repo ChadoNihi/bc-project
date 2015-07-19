@@ -52,10 +52,10 @@ class City < ActiveRecord::Base
   end
 
   def next
-    2
+    City.where("id > ?", id).first || City.minimum(:id)
   end
 
   def prev
-    2
+    City.where("id < ?", id).last || City.maximum(:id)
   end
 end

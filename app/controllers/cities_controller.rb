@@ -77,7 +77,7 @@ class CitiesController < ApplicationController
     begin
       @city = City.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      @city = City.find_by(name: params[:name])
+      @city = City.find_by(name: params[:id])
     end
   end
 

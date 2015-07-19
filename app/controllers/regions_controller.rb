@@ -7,7 +7,7 @@ class RegionsController < ApplicationController
   	begin
   		@region = Region.find(params[:id])
   	rescue ActiveRecord::RecordNotFound
-     	@region = Region.where(params[:name]).first
+     	@region = Region.find_by(name: params[:id])
     end
     @region_photos = Photo.joins(:city).where("cities.region_id = ?", @region.id).order(sort_option + " " + sort_direction).paginate(:page => params[:page], :per_page => 3)
   end
