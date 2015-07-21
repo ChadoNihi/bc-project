@@ -87,7 +87,7 @@ initPhotoSwipeFromDOM = (photoContainer, index) ->
             do (phEl) ->
                 phData = phEl.dataset
                 slides.push
-                    src: 'assets/'+phData.filePath
+                    src: "#{document.domain}/assets/#{phData.filePath}"
                     w: 640
                     h: 433
                     title: "<a href='/cities/#{phData.city}'><h3>#{phData.city}</h3></a><a href='/regions/#{phData.region}'><h5>#{phData.region}</h5></a>"

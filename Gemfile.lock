@@ -96,6 +96,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pg (0.17.1-x86-mingw32)
     photoswipe-rails (4.0.8a)
     rack (1.6.1)
     rack-test (0.6.3)
@@ -178,6 +179,7 @@ DEPENDENCIES
   masonry-rails
   nav_lynx
   paperclip (~> 4.2)
+  pg
   photoswipe-rails
   rails (= 4.2.1)
   sass-rails (~> 4.0.3)
