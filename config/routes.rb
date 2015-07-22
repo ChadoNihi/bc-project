@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     post 'weatherupdt', on: :collection
   end
 
+  get 'lawn' => 'application#lonely_door'
+  post 'lawn' => 'application#attempt_lonely_door'
+
 	root 'photos#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

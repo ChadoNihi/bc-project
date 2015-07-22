@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper ApplicationHelper
   helper_method :sort_option, :sort_direction
+
+  def lonely_door
+    
+  end
+
+  def attempt_lonely_door
+    session[:admin] = true if params[:reason] == 'walkaround'
+
+    redirect_to root_path
+  end
   
   protected
 

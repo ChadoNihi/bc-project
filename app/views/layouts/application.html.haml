@@ -30,8 +30,11 @@
 								= nav_link_to "New photo", new_photo_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
 							%li.pure-menu-item
 								= nav_link_to "New city", new_city_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
-			- flash.each do |k, v|
-				%div{:class => "flash #{k}"}= v
+			/
+				- if flash
+					.flashes
+						- flash.each do |k, v|
+							%div{:class => "flash #{k}"}= v
 
 			%main
 				= yield

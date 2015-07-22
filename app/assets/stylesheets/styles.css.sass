@@ -39,15 +39,12 @@ body
 			-webkit-animation: rotate-3d 2s
 			-moz-animation: rotate-3d 2s
 			animation: rotate-3d 2s
-			//-webkit-animation-fill-mode: forwards
-			//-moz-animation-fill-mode: forwards
-			//animation-fill-mode: forwards
 		&:hover, &.current
 			color: #ffffff
 			text-shadow: 0 0 1px #f0dddd
 			color: rgba(235,230,230,0.75)
 	#masonry-container
-		margin-top: -0.7em
+		margin: -0.7em auto 0
 		.box
 			color: #ffffff
 			margin: 1em 0
@@ -150,6 +147,20 @@ body
 			padding: 0 2em
 		&>:last-child
 			border-right: none
+	.flashes
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+		height: 4em
+		transform: scaleY(1)
+		padding: 2em 0.5em 0.5em
+		-webkit-transition: all 2s ease-in
+		-moz-transition: all 2s ease-in
+		-o-transition: all 2s ease-in
+		-ms-transition: all 2s ease-in
+		transition: all 2s ease-in
+		&.hide
+			transform: scaleY(0)
 	#map-canvas
 		width: 100%
 		max-width: 100%

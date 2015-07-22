@@ -20,8 +20,10 @@ class CitiesController < ApplicationController
 
     if params[:id] == 'invisible'
       redirect_to cities_path, notice: "We cannot work out your location. Try find it on this page."
+      return
     elsif @city.nil?
       redirect_to :back, notice: "Sorry, \"#{user_city_name}\" is not in our collection."
+      return
     end
 
     @city_photos = @city.photos.order(sort_option + " " + sort_direction).paginate(:page => params[:page], :per_page => 3)
