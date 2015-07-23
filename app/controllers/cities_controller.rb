@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+  http_basic_authenticate_with name: "ady", password: "123", except: [:index, :show]
   before_action :retrieve_city, only: [:show, :edit, :update, :destroy, :user_city_fail]
 
   def index

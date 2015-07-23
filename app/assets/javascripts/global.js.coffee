@@ -1,5 +1,5 @@
-$(document).on "page:change", ->
+$(document).on 'page:load ready', ->
 	flashesDiv = document.getElementsByClassName('flashes')[0]
-	console.log flashesDiv
 	if flashesDiv
 		flashesDiv.className += ' hide'
+		setTimeout((-> flashesDiv.style.display = 'none'), 6000)

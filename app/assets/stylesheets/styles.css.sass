@@ -151,16 +151,19 @@ body
 		-webkit-box-sizing: border-box
 		-moz-box-sizing: border-box
 		box-sizing: border-box
-		height: 4em
-		transform: scaleY(1)
+		max-height: 40%
+		overflow: hidden
 		padding: 2em 0.5em 0.5em
-		-webkit-transition: all 2s ease-in
-		-moz-transition: all 2s ease-in
-		-o-transition: all 2s ease-in
-		-ms-transition: all 2s ease-in
-		transition: all 2s ease-in
+		-webkit-transition: all 1.2s ease-in 4.2s
+		-moz-transition: all 1.2s ease-in 4.2s
+		-o-transition: all 1.2s ease-in 4.2s
+		-ms-transition: all 1.2s ease-in 4.2s
+		transition: all 1.2s ease-in 4.2s
 		&.hide
-			transform: scaleY(0)
+			max-height: 0
+			padding: 0 0.5em
+	.flash
+		border-bottom: 0.2em solid rgba(255,255,255,0.25)
 	#map-canvas
 		width: 100%
 		max-width: 100%
