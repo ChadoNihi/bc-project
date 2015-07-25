@@ -2,10 +2,14 @@
 	%h4
 		-Region.all.map{|reg| reg.name}.each do |region_name|
 			= link_to region_name, {:region_name => region_name}
-.block
-	%h4
-		-@fst_cities_letters.each do |fst_letter|
-			= link_to fst_letter, {:fst_letter => fst_letter}
+
+= render 'application/search_by_letter_panel', collection: @cities
+/
+	.block
+		%h4
+			-@fst_cities_letters.each do |fst_letter|
+				= link_to fst_letter, {:fst_letter => fst_letter}
+
 #masonry-container.transitions-enabled.infinite-scroll.has-gutters
 	-@cities.each do |city|
 		.box

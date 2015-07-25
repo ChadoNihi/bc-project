@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-	http_basic_authenticate_with name: "ady", password: "123", except: [:index, :show]
+	#http_basic_authenticate_with name: "ady", password: "123", except: [:index, :show]
 	before_action :retrieve_photo, only: [:show, :edit, :update, :destroy]
 	def index
 		@photos = nil

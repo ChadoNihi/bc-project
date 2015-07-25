@@ -29,7 +29,7 @@ class City < ActiveRecord::Base
   def self.set_weather(temp, city_name, icon_flname, obtained_at, descr)
     @weather[city_name.titleize.to_sym] = {:temp => temp, :icon_url => "http://openweathermap.org/img/w/#{icon_flname}.png", :obtained_at => obtained_at.to_i, :descr => descr}
   end
-
+=begin
   def self.fst_cities_letters(cities)
   	letterToOccured = Hash[([*'A'..'Z']+[*'0'..'9']).map {|l| [l, false]}]
   	cities.each do |city|
@@ -38,7 +38,7 @@ class City < ActiveRecord::Base
   	end
     letterToOccured.keys.select { |k| letterToOccured[k] }
   end
-
+=end
   def name=(s)
     super s.titleize
   end

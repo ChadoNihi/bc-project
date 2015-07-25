@@ -1,0 +1,10 @@
+.block
+	%h4
+		-fst_letters(collection).each do |fst_letter|
+			= link_to fst_letter, {:fst_letter => fst_letter}
+/
+	#masonry-container.transitions-enabled.infinite-scroll.has-gutters
+		-collection.each do |item|
+			.box
+				= link_to polymorphic_path(item) do
+					%h3= item.name

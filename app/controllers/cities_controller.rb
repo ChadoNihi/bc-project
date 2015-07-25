@@ -1,11 +1,11 @@
 class CitiesController < ApplicationController
-  http_basic_authenticate_with name: "ady", password: "123", except: [:index, :show]
+  #http_basic_authenticate_with name: "ady", password: "123", except: [:index, :show, :weatherupdt]
   before_action :retrieve_city, only: [:show, :edit, :update, :destroy, :user_city_fail]
 
   def index
     @cities = []
 
-    if not params[:fst_letter].nil?
+    if params[:fst_letter] #not params[:fst_letter].nil?
       @cities += City.where("name like ?", params[:fst_letter]<<'%')
     elsif not params[:region_name].nil?
       @cities += City.where(region_id: (Region.find_by(name: params[:region_name]).id) )
@@ -13,7 +13,7 @@ class CitiesController < ApplicationController
       @cities += City.all
     end
 
-    @fst_cities_letters = params[:fst_letter].nil? ? City.fst_cities_letters(@cities) : City.fst_cities_letters(City.all)
+    #@fst_cities_letters = params[:fst_letter].nil? ? City.fst_cities_letters(@cities) : City.fst_cities_letters(City.all)
   end
 
   def show
