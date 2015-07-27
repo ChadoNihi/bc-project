@@ -1,14 +1,18 @@
 .block
 	- w = City.get_weather(@city.name)
-	%span.num-line.vert-al-super{:data =>{:temp => w[0], :city => @city.name, :icon_url => w[1], :descr => w[2]}}= ''
-	%h2
-		= link_to "⤆", city_path(@city.prev )
-		= @city.name
-		= link_to "⤇", city_path(@city.next )
+	.name-core-miniblock
+		/= link_to "⤆", city_path(@city.prev )
+		= link_to "San Francisco", city_path(@city.prev )
+		= link_to "Kiev", city_path(@city.prev )
+		%h2= @city.name
+		= link_to "San Diego", city_path(@city.next )
+		= link_to "Bostonomot", city_path(@city.prev )
+		/= link_to "⤇", city_path(@city.next )
 		%div
+			%span.num-line.vert-al-super{:data =>{:temp => w[0], :city => @city.name, :icon_url => w[1], :descr => w[2]}}= ''
 			= link_to "W", "https://en.wikipedia.org/wiki/#{@city.name}", {:target=>"_blank" }
 			= link_to "Gmap", "https://www.google.com/maps/place/#{@city.name}", {:target=>"_blank" }
-	%span.num-line.vert-al-super{:data =>{:utcoffset => (@city.utcoffset || '0')}} 00:00:00
+			%span.num-line.vert-al-super{:data =>{:utcoffset => (@city.utcoffset || '0')}} 00:00:00
 	= link_to region_path(@city.region), { :class=>"vert-al-top" } do
 		%h3= @city.region.name
 	/= render 'city_links', city: @city

@@ -86,12 +86,14 @@ initPhotoSwipeFromDOM = (photoContainer, index) ->
         for phEl in phEls
             do (phEl) ->
                 phData = phEl.dataset
+
                 slides.push
                     src: "#{document.domain}/assets/#{phData.filePath}"
                     w: 640
                     h: 433
                     title: "<a href='/cities/#{phData.city}'><h3>#{phData.city}</h3></a><a href='/regions/#{phData.region}'><h5>#{phData.region}</h5></a>"
                     authorNSource: "<span class='sm-text fl-right'>by #{phData.author} / <a href='#{phData.source}'>Source</a></span>"
+                    tags: "<div>#{phData.tags}</div>"
         slides
     
     openPhotoSwipe photoContainer

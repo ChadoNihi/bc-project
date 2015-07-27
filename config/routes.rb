@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'tags/index'
-
-  get 'tags/show'
-
-  resources :regions, :photos
+  resources :regions, :photos, :tags
 
   resources :cities do
     post 'weatherupdt', on: :collection

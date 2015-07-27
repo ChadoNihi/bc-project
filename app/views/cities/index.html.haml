@@ -3,15 +3,16 @@
 		-Region.all.map{|reg| reg.name}.each do |region_name|
 			= link_to region_name, {:region_name => region_name}
 
-= render 'application/search_by_letter_panel', collection: @cities
-/
+= render 'application/search_by_letter_comp', collection: @cities
+
+-#
 	.block
 		%h4
 			-@fst_cities_letters.each do |fst_letter|
 				= link_to fst_letter, {:fst_letter => fst_letter}
 
-#masonry-container.transitions-enabled.infinite-scroll.has-gutters
-	-@cities.each do |city|
-		.box
-			= link_to city_path(city) do
-				%h3= city.name
+	#masonry-container.transitions-enabled.infinite-scroll.has-gutters
+		-@cities.each do |city|
+			.box
+				= link_to city_path(city) do
+					%h3= city.name

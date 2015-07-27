@@ -13,7 +13,7 @@ module ApplicationHelper
 	def fst_letters(collection)
 		letterToOccured = Hash[([*'A'..'Z']+[*'0'..'9']).map {|l| [l, false]}]
 	  	collection.each do |item|
-	  		fstLetter = city.name[0]
+	  		fstLetter = item.name[0].upcase
 	  		letterToOccured[fstLetter] = true unless letterToOccured[fstLetter]
 	  	end
 	    letterToOccured.keys.select { |k| letterToOccured[k] }

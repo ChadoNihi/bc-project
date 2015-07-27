@@ -1,2 +1,7 @@
-%h1 Tags#show
-%p Find me in app/views/tags/show.html.haml
+.block
+	%h2
+		= link_to "⤆", tag_path( @tag.prev )
+		= @tag.name
+		= link_to "⤇", tag_path( @tag.next )
+
+= render 'photos/photos', photos: @tag.photos, displayCitiesNames: true, displayRegionsNames: true
