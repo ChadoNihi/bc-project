@@ -8,7 +8,7 @@ body
 			font-size: 120%
 	input, select, textarea
 		color: #112
-	h1, h2, h3, h4, h5, h6, .name-core-miniblock
+	h1, h1, h2, h3, h4, h5, h6, .name-core-miniblock
 		div, span
 			text-align: center
 		a
@@ -66,13 +66,13 @@ body
 			:not(.city-photo)
 				z-index: 1
 	.block, .box, .pswp__caption__center
-		h2, h4, h3, h5, .name-core-miniblock
+		h1, h2, h4, h3, h5, .name-core-miniblock
 			display: inline-block
 			font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif
 			font-variant: small-caps
 			font-weight: 600
 			margin-left: 0.7em
-		h2
+		h1, h2
 			margin-bottom: 0.4em
 			margin-top: 0.2em
 	.pswp__caption__center
@@ -108,9 +108,12 @@ body
 		-webkit-filter: grayscale(1)
 
 	.name-core-miniblock
-		&>h2
+		&>h1
 			margin-left: 0
-
+		.small-text
+			font-size: 88%
+		.md-text
+			font-size: 123%
 	.num-line
 		font-size: 90%
 		margin-left: 1em

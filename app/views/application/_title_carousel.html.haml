@@ -1,0 +1,6 @@
+- next2items = item.next2; prev2items = item.prev2
+= link_to prev2items[1].name, polymorphic_path(prev2items[1]), { :class=>'small-text' }
+= link_to prev2items[0].name, polymorphic_path(prev2items[0]), { :class=>'md-text' }
+%h1= item.name
+= link_to next2items[0].name, polymorphic_path(next2items[0]), { :class=>'md-text' }
+= link_to next2items[1].name, polymorphic_path(next2items[1]), { :class=>'small-text' }

@@ -2,11 +2,11 @@
 	- w = City.get_weather(@city.name)
 	.name-core-miniblock
 		/= link_to "⤆", city_path(@city.prev )
-		= link_to "San Francisco", city_path(@city.prev )
-		= link_to "Kiev", city_path(@city.prev )
-		%h2= @city.name
-		= link_to "San Diego", city_path(@city.next )
-		= link_to "Bostonomot", city_path(@city.prev )
+		= link_to "San Francisco", city_path(@city.prev ), { :class=>'small-text' }
+		= link_to "Kiev", city_path(@city.prev ), { :class=>'md-text' }
+		%h1= @city.name
+		= link_to "San Diego", city_path(@city.next ), { :class=>'md-text' }
+		= link_to "Bostonomot", city_path(@city.prev ), { :class=>'small-text' }
 		/= link_to "⤇", city_path(@city.next )
 		%div
 			%span.num-line.vert-al-super{:data =>{:temp => w[0], :city => @city.name, :icon_url => w[1], :descr => w[2]}}= ''
