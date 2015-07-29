@@ -1,10 +1,6 @@
 .block
-	%h2
-		/- minId = Region.all(:select => :id).collect(&:id).min
-		/- maxId = Region.all(:select => :id).collect(&:id).max
-		= link_to "⤆", region_path( @region.prev )
-		= @region.name
-		= link_to "⤇", region_path( @region.next )
+	.name-core-miniblock
+		= render 'application/title_carousel', item: @region
 		%div
 			= link_to "Gmap", "https://www.google.com/maps/place/#{@region.name}", {:target=>"_blank" }
 .block.with-separator

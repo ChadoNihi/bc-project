@@ -1,4 +1,6 @@
 class City < ActiveRecord::Base
+  include NextPrev
+
   belongs_to :region
   has_many :photos
   has_attached_file :title_photo, :styles => { :list => "500x400>"}, :default_url => "/images/missing.jpg"
@@ -49,13 +51,5 @@ class City < ActiveRecord::Base
     userCity = 'invisible' if userCity.nil?
 
     return userCity
-  end
-
-  def next
-    City.where("id > ?", id).first || City.minimum(:id)
-  end
-
-  def prev
-    City.where("id < ?", id).last || City.maximum(:id)
   end
 end
