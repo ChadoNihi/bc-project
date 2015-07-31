@@ -1,7 +1,11 @@
 .block
-	%h2
-		= link_to "⤆", tag_path( @tag.prev )
-		= @tag.name
-		= link_to "⤇", tag_path( @tag.next )
+	= render 'application/title_carousel', item: @tag
+.block.with-separator
+	%ul.hor-list.inline-subblock
+		%li= sortable 'created_at', 'Default'
+		%li= sortable 'cities.name', 'City'
+		%li= sortable 'regions.name', 'Region'
+		%li= sortable 'RANDOM()', 'Shuffle'
+	= will_paginate @tag_photos, :class => "pagination inline-subblock"
 
-= render 'photos/photos', photos: @tag.photos, displayCitiesNames: true, displayRegionsNames: true
+= render 'photos/photos', photos: @tag_photos, displayCitiesNames: true, displayRegionsNames: true

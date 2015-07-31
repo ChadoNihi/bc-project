@@ -10,7 +10,7 @@ class Photo < ActiveRecord::Base
 
   def all_tags
   	#self.tags.map(&:name).join(", ")
-    self.tags.map {|tag| "<a href='#{Rails.application.routes.url_helpers.photos_path}'>#{tag.name}</a>"}.join(", ")
+    self.tags.map {|tag| "<a href='#{Rails.application.routes.url_helpers.tag_path(tag)}'>#{tag.name}</a>"}.join(", ")
   end
 
   def all_tags=(l_of_t)
