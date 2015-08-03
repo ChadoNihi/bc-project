@@ -1,5 +1,6 @@
 .block
-	= render 'application/title_carousel', item: @tag
+	.name-core-miniblock
+		= render 'application/title_carousel', item: @tag
 .block.with-separator
 	%ul.hor-list.inline-subblock
 		%li= sortable 'created_at', 'Default'

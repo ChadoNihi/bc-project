@@ -1,5 +1,5 @@
 // Shorthand for $( document ).ready()
-$(function() {
+$(document).on('ready page:load', function(event) {
     $('#menuLink').on('click', function (e) {
         e.preventDefault();
         $('#layout').toggleClass('active');

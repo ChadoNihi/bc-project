@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
   #http_basic_authenticate_with name: "ady", password: "123", except: [:index, :show, :weatherupdt]
-  before_action :retrieve_city, only: [:show, :edit, :update, :destroy, :user_city_fail]
+  before_action :retrieve_city, only: [:show, :edit, :update, :destroy] #:user_city_fail
 
   def index
     @cities = []
@@ -17,7 +17,7 @@ class CitiesController < ApplicationController
   end
 
   def show
-    user_city_name = params[:id] if @city.nil?
+    user_city_name = params[:id] if params[:ucity]
 
     if params[:id] == 'invisible'
       redirect_to cities_path, notice: "We cannot work out your location. Try find it on this page."
@@ -62,7 +62,7 @@ class CitiesController < ApplicationController
 
   def destroy
   end
-
+=begin
   def user_city_fail
     user_city_name = params[:name] if @city.nil?
 
@@ -73,6 +73,7 @@ class CitiesController < ApplicationController
     end
         
   end
+=end
 
   private
 

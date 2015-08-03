@@ -18,20 +18,20 @@
 
 					%ul.pure-menu-list
 						%li.pure-menu-item
-							= nav_link_to "Cities", cities_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
+							= link_to "Cities", cities_path, { :class=> current_page?(controller: 'cities', action: 'index') ? "pure-menu-link pure-menu-selected" : 'pure-menu-link' }
 						%li.pure-menu-item
-							= nav_link_to "Regions", regions_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
+							= link_to "Regions", regions_path, { :class=> current_page?(controller: 'regions', action: 'index') ? "pure-menu-link pure-menu-selected" : 'pure-menu-link' }
 						%li.pure-menu-item
-							= nav_link_to "Your city", city_path(City.find_user_city_in_db), { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
+							= link_to "Your city", city_path(City.find_user_city_in_db, :ucity => true), { :class=> current_page?(controller: 'cities', action: 'show', id: @city.nil? ? '' : @city.id, ucity: true) ? "pure-menu-link pure-menu-selected" : 'pure-menu-link'}
 						%li.pure-menu-item
-							= nav_link_to "Random city", city_path(City.offset(rand(City.count)).first), { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
+							= link_to "Random city", city_path(City.offset(rand(City.count)).first, :rand => true), { :class=> current_page?(controller: 'cities', action: 'show', id: @city.nil? ? '' : @city.id, rand: true) ? "pure-menu-link pure-menu-selected" : 'pure-menu-link' }
 						- if admin?
 							%li.pure-menu-item.menu-item-divided
-								= nav_link_to "New photo", new_photo_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
+								= link_to "New photo", new_photo_path, { :class=> current_page?(controller: 'photos', action: 'new') ? "pure-menu-link pure-menu-selected" : 'pure-menu-link' }
 							%li.pure-menu-item
-								= nav_link_to "New city", new_city_path, { :class=>"pure-menu-link" }, {:selected_class => 'pure-menu-selected'}
+								= link_to "New city", new_city_path, { :class=> current_page?(controller: 'cities', action: 'new') ? "pure-menu-link pure-menu-selected" : 'pure-menu-link' }
 								
-			- if flash
+			- if flash[:notice]
 				.flashes
 					- flash.each do |k, v|
 						%div{:class => "flash #{k}"}= v
